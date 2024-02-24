@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  blogs_storage:
+    build:
+      context: ./storage
+      dockerfile: Dockerfile.dev
+    container_name: blogs_storage
+    ports:
+      - "9999:3303"
+    depends_on:
+      - mongodb
+    environment:
+      - PORT=3303
+      - DB_URL=mongodb://mongodb:27017/mydatabase
+    volumes:
+      - ./storage:/app
+
+volumes:
+  mongodb_data:
