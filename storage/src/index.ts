@@ -6,16 +6,9 @@ import operationsRouter from "./routes/operations.route";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT!) || 3303;
-const DB_URL: string =
-  process.env.DB_URL || "mongodb://localhost:27017/mydatabase";
 
 dotenv.config();
 app.use(express.json());
-
-mongoose
-  .connect(DB_URL)
-  .then(() => console.log("Conexión a MongoDB establecida"))
-  .catch((err) => console.error("Error al conectar a MongoDB:", err));
 
 /**
  * Health check endpoint.

@@ -4,10 +4,16 @@
 // TODO: refactor if needed for other db engines
 export interface InsertPayload {
   /**
-   * The name of the table to insert data into.
+   * The name of the database to insert data into.
    * @type {string}
    */
-  tableName: string;
+  database: string;
+
+  /**
+   * The name of the collection to insert data into.
+   * @type {string}
+   */
+  collection: string;
 
   /**
    * The column names to insert data into.

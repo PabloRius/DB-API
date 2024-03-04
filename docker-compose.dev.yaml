@@ -20,7 +20,7 @@ services:
       - mongodb
     environment:
       - PORT=3303
-      - DB_URL=mongodb://mongodb:27017/mydatabase
+      - MONGODB_URI=mongodb://mongodb:27017
     volumes:
       - ./storage:/app
 

@@ -26,11 +26,14 @@ async function insertIntoTable(
   try {
     // get the table name and data from the request
     const tableName = req.params.tableName;
+    const collection = req.params.collection;
     const data = req.body;
+    console.log("DATA: ", data);
 
     // create a InsertPayload object
     const payload: InsertPayload = {
-      tableName: tableName,
+      database: tableName,
+      collection: collection || "",
       columns: Object.keys(data),
       values: [Object.values(data)],
     };
